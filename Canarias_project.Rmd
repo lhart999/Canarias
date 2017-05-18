@@ -56,3 +56,10 @@ The assumptions of a parametric model are met
 autoplot(model1)
 ```
 
+As might be expected, the subspecies described on the basis of morphology also differ in the leaf width/length ratio.
+
+```{r}
+ggplot(a, aes(x=subspecies, y=leafratio)) +
+  geom_boxplot ()
+```
+
