@@ -14,10 +14,11 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 ```{r}
 library(tidyverse)
 library (ggfortify)
+library(knitr)
 ```
+We are looking at seven subspecies of a species of plant in the daisy family. All of these subspecies are found on islands in the Canary Island archipelago.
 
-
-First we load the data, chack it and load required packages
+First we load the data, check it and load required packages
 
 ```{r}
 canary <- read_csv("Canary_island_Argyranthemum.csv")
