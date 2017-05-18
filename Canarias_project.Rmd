@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 ```{r}
 library(tidyverse)
+library (ggfortify)
 ```
 
 
@@ -21,10 +22,22 @@ First we load the data, chack it and load required packages
 ```{r}
 canary <- read_csv("Canary_island_Argyranthemum.csv")
 head(canary)
-library(ggplot2)
+
 
 ```
+
+```{r}
+a <- mutate(canary, leafratio = (leaf_length/leaf_width))
+
+```
+
 
 # Cluster analysis
 
 The clusters have different leaf/length ratios.
+
+```{r}
+ggplot(a, aes(x=as.factor(cluster), y=leafratio)) +
+  geom_boxplot ()
+```
+
