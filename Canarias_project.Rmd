@@ -34,10 +34,24 @@ a <- mutate(canary, leafratio = (leaf_length/leaf_width))
 
 # Cluster analysis
 
-The clusters have different leaf/length ratios.
+The clusters have different leaf width/length ratios.
 
 ```{r}
 ggplot(a, aes(x=as.factor(cluster), y=leafratio)) +
   geom_boxplot ()
+```
+
+This is confirmed using a linear model.
+
+```{r}
+model1 <- lm(leafratio ~ as.factor(cluster), data = a)
+anova(model1)
+summary(model1)
+```
+
+The assumptions of a parametric model are met
+
+```{r}
+autoplot(model1)
 ```
 
