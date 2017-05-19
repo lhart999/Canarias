@@ -49,6 +49,17 @@ model1 <- lm(leafratio ~ as.factor(cluster), data = a)
 anova(model1)
 summary(model1)
 ```
+We did the Tukey test to test for differences between the clusters.
+
+```{r}
+#Tukey test to test for differences between the clusters
+# according to 04_basic-stats_students.Rmd (day 03 materials)
+model2.aov <- aov(model1) # repackage the model for a Tukey Test
+tukey.out <- TukeyHSD(model2.aov) # generate Tukey test
+tukey.ou
+```
+
+
 
 The assumptions of a parametric model are met
 
