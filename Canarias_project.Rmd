@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+knitr::opts_chunk$set(echo = FALSE, message = F, warning = F)
 ```
 
 # Initialise analysis
@@ -35,33 +35,36 @@ a <- mutate(canary, leafratio = (leaf_length/leaf_width))
 
 # Cluster analysis
 
-The clusters have different leaf width/length ratios.
+It seems that the clusters have different leaf width/length ratios.
 
 ```{r}
 ggplot(a, aes(x=as.factor(cluster), y=leafratio)) +
   geom_boxplot ()
 ```
 
-This is confirmed using a linear model.
+This is confirmed using a linear model. We also did the Tukey test to test for differences between the clusters.
+
+Results show that there is a difference between the leaf ratios of clusters 1 and 2 and 1 and 3, but there is no significant difference in leaf ratios between the clusters 2 and 3.
 
 ```{r}
 model1 <- lm(leafratio ~ as.factor(cluster), data = a)
 anova(model1)
 summary(model1)
 ```
-We did the Tukey test to test for differences between the clusters.
+
+Tukey's test
 
 ```{r}
 #Tukey test to test for differences between the clusters
 # according to 04_basic-stats_students.Rmd (day 03 materials)
 model2.aov <- aov(model1) # repackage the model for a Tukey Test
 tukey.out <- TukeyHSD(model2.aov) # generate Tukey test
-tukey.ou
+tukey.out
 ```
 
 
 
-The assumptions of a parametric model are met
+The assumptions of a parametric model are met.
 
 ```{r}
 autoplot(model1)
