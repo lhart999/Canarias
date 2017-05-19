@@ -40,3 +40,9 @@ library (ggfortify)
 autoplot(model2)
 anova(model2)
 summary(model2)
+
+#Tukey test to test for differences between the clusters
+# according to 04_basic-stats_students.Rmd (day 03 materials)
+model2.aov <- aov(model1) # repackage the model for a Tukey Test
+tukey.out <- TukeyHSD(model2.aov) # generate Tukey test
+tukey.out 
